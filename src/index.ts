@@ -162,8 +162,8 @@ async function runMediasoupWorker() {
   worker = await createWorker({
     logLevel: "warn",
     logTags: ['info', 'ice', 'dtls', 'rtp', 'srtp', 'rtcp'],
-    rtcMinPort: 10000,
-    rtcMaxPort: 10100,
+    rtcMinPort: 40000,
+    rtcMaxPort: 49999,
   });
 
   worker.on('died', () => {
