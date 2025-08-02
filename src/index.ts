@@ -224,12 +224,19 @@ async function createWebRtcTransport() {
       dtlsParameters: transport.dtlsParameters,
       iceServers: [
         {
-          urls: 'stun:stun.l.google.com:19302'
-        },
-        {
-          urls: 'turn:openrelay.metered.ca:80',
-          username: 'openrelayproject',
-          credential: 'openrelayproject'
+             urls: [ "stun:eu-turn3.xirsys.com" ]
+        }, 
+        {   
+          username: "K-QsXdCj2CobxxtJrQuGRAKnqN6LkLt9btyZuFRr5ETxpxVuA_MCwj1ygUsCrgXbAAAAAGiOKYVvbG93bw==",   
+          credential: "4e08a75c-6fb2-11f0-8f9b-0242ac140004",   
+          urls: [       
+            "turn:eu-turn3.xirsys.com:80?transport=udp",       
+            "turn:eu-turn3.xirsys.com:3478?transport=udp",       
+            "turn:eu-turn3.xirsys.com:80?transport=tcp",       
+            "turn:eu-turn3.xirsys.com:3478?transport=tcp",       
+            "turns:eu-turn3.xirsys.com:443?transport=tcp",       
+            "turns:eu-turn3.xirsys.com:5349?transport=tcp"   
+          ]
         }
       ],
       // iceTransportPolicy: 'relay',
