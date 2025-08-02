@@ -176,7 +176,7 @@ async function createWebRtcTransport() {
   const transport = await mediasoupRouter.createWebRtcTransport({
     listenIps: [
         {
-          ip: '127.0.0.1',
+          ip: '0.0.0.0',
           announcedIp: undefined,
         }
       ],
