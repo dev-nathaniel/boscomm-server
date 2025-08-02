@@ -201,7 +201,7 @@ async function createWebRtcTransport() {
     listenIps: [
         {
           ip: '0.0.0.0',
-          announcedIp: ip // Use the local IP address,
+          announcedIp: 'boscomm-server.onrender.com' // Use the local IP address,
         }
       ],
     enableUdp: true,
@@ -222,17 +222,17 @@ async function createWebRtcTransport() {
       iceParameters: transport.iceParameters,
       iceCandidates: transport.iceCandidates,
       dtlsParameters: transport.dtlsParameters,
-      iceServers: [
-        {
-          urls: 'stun:stun.l.google.com:19302'
-        },
-        {
-          urls: 'turn:openrelay.metered.ca:80',
-          username: 'openrelayproject',
-          credential: 'openrelayproject'
-        }
-      ],
-      iceTransportPolicy: 'relay',
+      // iceServers: [
+      //   {
+      //     urls: 'stun:stun.l.google.com:19302'
+      //   },
+      //   {
+      //     urls: 'turn:openrelay.metered.ca:80',
+      //     username: 'openrelayproject',
+      //     credential: 'openrelayproject'
+      //   }
+      // ],
+      // iceTransportPolicy: 'relay',
     },
   };
 }
