@@ -6,6 +6,29 @@ import routes from './routes';
 import cors from 'cors';
 import { registerSocketHandlers } from './sockets';
 import {setLogEventListeners, version, types as MediasoupTypes, createWorker} from 'mediasoup';
+import os from 'os';
+const ifaces = os.networkInterfaces()
+
+const getLocalIp = () => {
+  let localIp = '127.0.0.1'
+  Object.keys(ifaces).forEach((ifname) => {
+    console.log(`Network interface: ${ifname}`);
+    const ifaceList = ifaces[ifname];
+    if (!ifaceList) {
+      return;
+    }
+    for (const iface of ifaceList) {
+      // Ignore IPv6 and 127.0.0.1
+      if (iface.family !== 'IPv4' || iface.internal !== false) {
+        continue
+      }
+      // Set the local ip to the first IPv4 address found and exit the loop
+      localIp = iface.address
+      return
+    }
+  })
+  return localIp
+}
 dotenv.config();
 
 // Global variables
@@ -172,12 +195,13 @@ async function createWebRtcTransport() {
   const maxIncomingBitrate = 1500000
   const initialAvailableOutgoingBitrate = 1000000
     
-
+    const ip = getLocalIp();
+  console.log(`Using local IP: ${ip}`);
   const transport = await mediasoupRouter.createWebRtcTransport({
     listenIps: [
         {
           ip: '0.0.0.0',
-          announcedIp: undefined,
+          announcedIp: ip // Use the local IP address,
         }
       ],
     enableUdp: true,
