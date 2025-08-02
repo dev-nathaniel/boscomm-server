@@ -200,8 +200,8 @@ async function createWebRtcTransport() {
   const transport = await mediasoupRouter.createWebRtcTransport({
     listenIps: [
         {
-          ip: '0.0.0.0',
-          announcedIp: '216.24.57.7' // Use the local IP address,
+          ip: ip,
+          announcedIp: '216.24.57.251' // Use the local IP address,
         }
       ],
     enableUdp: true,
