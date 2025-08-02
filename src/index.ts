@@ -201,7 +201,7 @@ async function createWebRtcTransport() {
     listenIps: [
         {
           ip: "0.0.0.0",
-          announcedIp: '216.24.57.7' // Use the local IP address,
+          announcedIp: ip // Use the local IP address,
         }
       ],
     enableUdp: true,
