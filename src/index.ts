@@ -232,6 +232,7 @@ async function createWebRtcTransport() {
           credential: 'openrelayproject'
         }
       ],
+      iceTransportPolicy: 'relay',
     },
   };
 }
